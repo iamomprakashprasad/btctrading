@@ -1,0 +1,49 @@
+name: Github Pipeline
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code Pushed
+        run: echo "Deployment made by ${{ github.actor }} on branch ${{ github.ref }}"
+        continue-on-error: true
+      - name: Source Code Link
+        run: echo "Source code- ${{ github.event.repository.html_url }}/tree/${{ github.sha }}"
+      - name: Deploy code approval
+        run: echo "To deploy code on production aproove the deployment"
+      - name: Wait for approval
+        uses: peter-evans/wait-for-approval@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          message: 'Please approve the deployment'
+          
+      - name: Install basic dependencies
+        run: |
+          echo "installing and updating basic dependencies"
+          sudo apt update -y && sudo apt upgrade -y
+          sudo apt install gcc curl -y
+          sudo apt install python3-pip
+          pip3 install --upgrade pip setuptools
+          curl -sL https://deb.nodesource.com/setup_16.x | bash
+          apt-get install nodejs -y
+          rm -rf node_modules
+          npm install -g serverless@3.1.1 -g
+          npm install --production
+          pip3 install awscl
+      - name: configure aws
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-south-1
+      - name: Deploy Lambda function
+        run: |
+          sls deploy --verbose
+          
+
+          
+          
+          
