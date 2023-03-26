@@ -18,6 +18,8 @@ jobs:
           sudo apt update -y && sudo apt upgrade -y && sudo apt install gcc curl python3-pip -y && sudo curl -sL https://deb.nodesource.com/setup_16.x | sudo bash &&  sudo apt install nodejs -y
       - name: installing pip setup tools
         run: sudo pip3 install --upgrade pip setuptools
+      - name: Print directory
+        run: ls -R
       - name: Installing node
         run: |
           sudo rm -rf node_modules
