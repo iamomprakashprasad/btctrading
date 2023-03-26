@@ -19,7 +19,7 @@ jobs:
           echo "installing and updating basic dependencies"
           sudo apt update -y && sudo apt upgrade -y && sudo apt install gcc curl -y && sudo apt install python3-pip
           pip3 install --upgrade pip setuptools
-          curl -sL https://deb.nodesource.com/setup_16.x | bash
+          sudo curl -sL https://deb.nodesource.com/setup_16.x | bash
           sudo apt-get install nodejs -y
           sudo rm -rf node_modules
           npm install -g serverless@3.1.1 -g
