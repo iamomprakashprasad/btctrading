@@ -12,18 +12,19 @@ jobs:
         continue-on-error: true
       - name: Source Code Link
         run: echo "Source code- ${{ github.event.repository.html_url }}/tree/${{ github.sha }}"
-      - name: Deploy code approval
-        run: echo "To deploy code on production aproove the deployment"
       - name: Install basic dependencies
         run: |
           echo "installing and updating basic dependencies"
-          apt update -y && apt upgrade -y && apt install gcc curl -y && apt install python3-pip && curl -sL https://deb.nodesource.com/setup_16.x | bash
-          pip3 install --upgrade pip setuptools
+          apt update -y 
+          apt upgrade -y 
+          apt install gcc curl -y 
+          apt install python3-pip -y 
+          curl -sL https://deb.nodesource.com/setup_16.x | bash
+          pip3 install --upgrade pip setuptools -y
       - name: Installing node
         run: |
-          sudo apt-get install nodejs -y
-          sudo npm init
-          sudo rm -rf node_modules
+          apt install nodejs -y
+          rm -rf node_modules
           npm install -g serverless@3.1.1 -g
           npm install --production
           pip3 install awscl
