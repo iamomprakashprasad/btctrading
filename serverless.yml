@@ -2,7 +2,7 @@ service: btc-trading
 provider:
   name: aws
   runtime: nodejs14.x
-  region: ${opt:stage, self.custom.default.region}
+  region: ${opt:stage, self:custom.default.region}
   stage: ${opt:stage, self:custom.default.stage}
   versionFunctions: true
   memorySize: 128
