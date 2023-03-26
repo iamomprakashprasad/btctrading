@@ -36,6 +36,7 @@ jobs:
       - name: Install Serverless Framework
         run: |
           npm install -g serverless@3.1.1
+          npm install -g serverless-s3-deploy@0.10.1
           npm install -g --production
       - name: configure aws
         uses: aws-actions/configure-aws-credentials@v1
