@@ -17,9 +17,10 @@ jobs:
           echo "installing and updating basic dependencies"
           sudo apt install gcc python3-pip -y
       - name: installing pip setup tools
-        run: sudo pip3 install --upgrade pip setuptools
-      - name: Print directory
-        run: ls -R
+        run: |
+          pip install --upgrade pip setuptools
+          pip install -r requirements.tx
+          
       - name: Install Node.js and npm
         uses: actions/setup-node@v2
         with:
