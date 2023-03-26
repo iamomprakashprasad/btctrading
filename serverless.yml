@@ -2,8 +2,8 @@ service: btc-trading
 provider:
   name: aws
   runtime: nodejs14.x
-  region: ${env.region}
-  stage: ${env.stage}
+  region: ${opt.region}
+  stage: ${opt.stage}
   versionFunctions: true
   memorySize: 128
   logs:
@@ -36,9 +36,10 @@ resources:
     # register queues here
 
 custom:
-  default: ${file(./config/config.${env.stage}.yml):default}
-  lambda: ${file(./config/config.${{env.stage}}.yml):lambda}
-  logRetentionInDays: ${file(./config/config.${{env.stage}}.yml):logRetentionInDays}
+  env: ${file(./.github/github_${self:provider.stage}_pipeline.yml):env}
+  default: ${file(./config/config.${self:custom.env.stage}.yml):default}
+  lambda: ${file(./config/config.${{self:custom.env.stage}}.yml):lambda}
+  logRetentionInDays: ${file(./config/config.${{self:custom.env.stage}}.yml):logRetentionInDays}
   prune:
     automatic: true
     number: ${self:custom.lambda.maxVersions}
