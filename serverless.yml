@@ -24,6 +24,7 @@ package:
   include:
     - app/**
     - handlers/**
+    - config/**
     - '*.py'
   exclude:
     - ./**
