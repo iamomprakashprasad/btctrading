@@ -1,5 +1,5 @@
 service: btc-trading
-provide:
+provider:
   name: aws
   runtime: nodejs16.x
 
