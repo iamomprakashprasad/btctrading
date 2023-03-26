@@ -15,6 +15,7 @@ jobs:
       - name: Install basic dependencies
         run: |
           echo "installing and updating basic dependencies"
+          sudo apt-get cache -y
           sudo apt update -y 
           sudo apt upgrade -y 
           sudo apt install gcc curl -y 
