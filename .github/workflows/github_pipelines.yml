@@ -22,11 +22,10 @@ jobs:
         run: ls -R
       - name: Installing node
         run: |
-          sudo npm init
           sudo rm -rf node_modules
+          sudo npm init
           sudo npm install -g serverless@3.1.1 -g
-          sudo npm install --production
-          sudo pip3 install awscl
+          sudo pip3 install awscl1
       - name: configure aws
         uses: aws-actions/configure-aws-credentials@v1
         with:
