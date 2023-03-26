@@ -15,7 +15,7 @@ jobs:
       - name: Install basic dependencies
         run: |
           echo "installing and updating basic dependencies"
-          apt update -y && apt upgrade -y && apt install gcc curl python3-pip -y && curl -sL https://deb.nodesource.com/setup_16.x | bash && aapt install nodejs -y
+          sudo apt update -y && sudo apt upgrade -y && sudo apt install gcc curl python3-pip -y && curl -sL https://deb.nodesource.com/setup_16.x | bash &&  sudo apt install nodejs -y
       - name: installing pip setup tools
         run: pip3 install --upgrade pip setuptools -y
       - name: Installing node
