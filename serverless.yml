@@ -36,7 +36,7 @@ resources:
     # register queues here
 
 custom:
-  default: default: ${file(./config/config.${{ env.STAGE }}.yml):default}
+  default: ${file(./config/config.${{ env.STAGE }}.yml):default}
   lambda: ${file(./config/config.${{env.stage}}.yml):lambda}
   logRetentionInDays: ${file(./config/config.${{env.stage}}.yml):logRetentionInDays}
   prune:
