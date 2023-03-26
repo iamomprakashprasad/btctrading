@@ -36,9 +36,9 @@ resources:
     # register queues here
 
 custom:
-  default: ${file(./config/config.${env.stage}.yml):default}
-  lambda: ${file(./config/config.${env.stage}.yml):lambda}
-  logRetentionInDays: ${file(./config/config.${env.stage}.yml):logRetentionInDays}
+  default: ${file(./config/config.${self.provider.stage}.yml):default}
+  lambda: ${file(./config/config.${self.provider.stage}.yml):lambda}
+  logRetentionInDays: ${file(./config/config.${self.provider.stage}.yml):logRetentionInDays}
   prune:
     automatic: true
     number: ${self:custom.lambda.maxVersions}
