@@ -1,8 +1,10 @@
-name: Github Pipeline
+name: Github master Pipeline
 on:
   push:
     branches:
       - master
+    workflow_dispatch:
+      if: github.ref == 'refs/heads/master'
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -36,12 +38,12 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-south-1
+          aws-region: us-west-2
       - name: configure sls
         run: sls config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: Deploy Lambda function
         run: |
-          sls deploy --stage production --region ap-south-1 --force
+          sls deploy --stage prod --region us-west-2 
           
 
           

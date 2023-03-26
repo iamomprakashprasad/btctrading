@@ -2,17 +2,46 @@ service: btc-trading
 provider:
   name: aws
   runtime: nodejs14.x
-  region: ap-south-1
-  iamRoleStatements:
-    - Effect: "Allow"
-      Action:
-        - s3:ListBucket
-        - s3:DeleteObject
-        - s3:PutObject
-        - s3:GetObject
-        - s3:CreateBucket
-      Resource: "*"
+  region: ${opt:stage, self.custom.default.region}
+  stage: ${opt:stage, self:custom.default.stage}
+  versionFunctions: true
+  memorySize: 128
+  logs:
+    restApi: true
+  deploymentBucket:
+    name: ${self:custom.default.deploymentBucketName}
+  deploymentPrefix: serverless/${self:service}/
+  logRetentionInDays: ${self:custom.logRetentionInDays}
+  environment:
+    REGION_NAME: ${self:custom.default.region}
+    STAGE: ${self:custom.default.stage}
+    COINMARKETCAP_API_KEY: ${self:custom.default.coinmarket_cap_api_key}
+    POLYGON_IO_AUTHORIZATION_KEY: ${self:custom.default.poylogon_io_authorization_key}
+    POLYGON_BASE_URL: $(self:custom.default.polygon_base_url)
+    COINGECKO_BASE_URL: $(self:custom.default.coingecko_base_url)
+    COINMARKET_CAP_BASE_URL: $(self:custom.default.coinrmarketcap_base_url)
+package:
+  include:
+    - app/**
+    - handlers/**
+    - '*.py'
+  exclude:
+    - ./**
 
 functions:
-  hello:
-    handler: handlers.btc_trading_schedule.py
+  btc_trading_schedule: ${file(./resources/lambda/btc_trading_schedule.yml):btc_trading_schedule}
+
+resources:
+  Resources:
+    # register queues here
+
+custom:
+  default: ${file(./config/config.${opt:stage}.yml):default}
+  lambda: ${file(./config/config.${opt:stage}.yml):lambda}
+  logRetentionInDays: ${file(./config/config.${opt:stage}.yml):logRetentionInDays}
+  prune:
+    automatic: true
+    number: ${self:custom.lambda.maxVersions}
+  pythonRequirements:
+    dockerizePip: false
+    slim: true
