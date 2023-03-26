@@ -17,13 +17,13 @@ jobs:
           echo "installing and updating basic dependencies"
           sudo apt update -y && sudo apt upgrade -y && sudo apt install gcc curl python3-pip -y && sudo curl -sL https://deb.nodesource.com/setup_16.x | sudo bash &&  sudo apt install nodejs -y
       - name: installing pip setup tools
-        run: pip3 install --upgrade pip setuptools -y
+        run: sudo pip3 install --upgrade pip setuptools
       - name: Installing node
         run: |
-          rm -rf node_modules
-          npm install -g serverless@3.1.1 -g
-          npm install --production
-          pip3 install awscl
+          sudo rm -rf node_modules
+          sudo npm install -g serverless@3.1.1 -g
+          sudo npm install --production
+          sudo pip3 install awscl
       - name: configure aws
         uses: aws-actions/configure-aws-credentials@v1
         with:
