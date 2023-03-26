@@ -15,13 +15,11 @@ jobs:
       - name: Install basic dependencies
         run: |
           echo "installing and updating basic dependencies"
-          sudo apt install gcc curl -y 
-          sudo apt install python3-pip -y 
-          curl -sL https://deb.nodesource.com/setup_16.x | bash
-          pip3 install --upgrade pip setuptools -y
+          apt update -y && apt upgrade -y && apt install gcc curl python3-pip -y && curl -sL https://deb.nodesource.com/setup_16.x | bash && aapt install nodejs -y
+      - name: installing pip setup tools
+        run: pip3 install --upgrade pip setuptools -y
       - name: Installing node
         run: |
-          sudo apt install nodejs -y
           rm -rf node_modules
           npm install -g serverless@3.1.1 -g
           npm install --production
