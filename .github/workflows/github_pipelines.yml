@@ -19,8 +19,8 @@ jobs:
       - name: installing pip setup tools
         run: |
           pip install --upgrade pip setuptools
-          pip install -r requirements.tx
-          
+          pip install -r requirements.txt
+
       - name: Install Node.js and npm
         uses: actions/setup-node@v2
         with:
