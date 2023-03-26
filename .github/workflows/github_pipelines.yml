@@ -14,16 +14,6 @@ jobs:
         run: echo "Source code- ${{ github.event.repository.html_url }}/tree/${{ github.sha }}"
       - name: Deploy code approval
         run: echo "To deploy code on production aproove the deployment"
-      - name: Wait for approval
-        uses: trstringer/manual-approval@v1
-        with:
-          secret: ${{ secrets.GITHUB_TOKEN }}
-          approvers: ${{ github.actor }}
-          minimum-approvals: 1
-          issue-title: "Deploy on Prod"
-          issue-body: "Please approve or deny the deployment of version v1.3.5."
-          exclude-workflow-initiator-as-approver: false
-          
       - name: Install basic dependencies
         run: |
           echo "installing and updating basic dependencies"
