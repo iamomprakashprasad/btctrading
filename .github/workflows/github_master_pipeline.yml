@@ -5,6 +5,10 @@ on:
       - master
     workflow_dispatch:
       if: github.ref == 'refs/heads/master'
+
+env:
+  region: us-west-2
+  stage: prod
 jobs:
   deploy:
     runs-on: ubuntu-latest
