@@ -15,10 +15,12 @@ jobs:
       - name: Deploy code approval
         run: echo "To deploy code on production aproove the deployment"
       - name: Wait for approval
-        uses: peter-evans/wait-for-approval@v2
+        uses: trstringer/manual-approval@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          message: 'Please approve the deployment'
+          issue-title: "Deploy on Prod"
+          issue-body: "Please approve or deny the deployment of version v1.3.5."
+          exclude-workflow-initiator-as-approver: false
           
       - name: Install basic dependencies
         run: |
