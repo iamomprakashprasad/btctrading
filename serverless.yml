@@ -2,6 +2,15 @@ service: btc-trading
 provider:
   name: aws
   runtime: nodejs14.x
+  region: ap-south-1
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - s3:ListBucket
+        - s3:DeleteObject
+        - s3:PutObject
+        - s3:GetObject
+      Resource: "*"
 
 functions:
   hello:
