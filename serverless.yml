@@ -3,7 +3,7 @@ provider:
   name: aws
   runtime: nodejs14.x
   region: ${opt.region}
-  stage: ${opt.stage}
+  stage: ${opt.stage, 'prod'}
   versionFunctions: true
   memorySize: 128
   logs:
