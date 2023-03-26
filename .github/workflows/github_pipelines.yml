@@ -41,7 +41,7 @@ jobs:
         run: sls config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: Deploy Lambda function
         run: |
-          sls deploy --stage production
+          sls deploy --stage production --region ap-south-1 --force
           
 
           
