@@ -15,15 +15,17 @@ jobs:
       - name: Install basic dependencies
         run: |
           echo "installing and updating basic dependencies"
-          sudo apt install gcc curl python3-pip -y && sudo curl -sL https://deb.nodesource.com/setup_16.x | sudo bash &&  sudo apt install nodejs -y
+          sudo apt install gcc python3-pip -y
       - name: installing pip setup tools
         run: sudo pip3 install --upgrade pip setuptools
       - name: Print directory
         run: ls -R
-      - name: Installing node
-        run: |
-          sudo rm -rf node_modules
-          sudo npm install -g serverless@3.1.1 -g
+      - name: Install Node.js and npm
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+      - name: Install Serverless Framework
+        run: npm install -g serverless@3.1.1
       - name: configure aws
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -32,7 +34,7 @@ jobs:
           aws-region: ap-south-1
       - name: Deploy Lambda function
         run: |
-          sls deploy --verbose
+          sls deploy --stage production
           
 
           
