@@ -1,5 +1,5 @@
 service: btc-trading
-plugins: ${file(./config/config.${opt:stage}.yml):plugins}
+plugins: ${file(config/config.${opt:stage}.yml):plugins}
 provider:
   name: aws
   runtime: python3.8
@@ -59,9 +59,9 @@ resources:
     # register queues here
 
 custom:
-  default: ${file(./config/config.${self:provider.stage}.yml):default}
-  lambda: ${file(./config/config.${self:provider.stage}.yml):lambda}
-  logRetentionInDays: ${file(./config/config.${self:provider.stage}.yml):logRetentionInDays}
+  default: ${file(config/config.${self:provider.stage}.yml):default}
+  lambda: ${file(config/config.${self:provider.stage}.yml):lambda}
+  logRetentionInDays: ${file(config/config.${self:provider.stage}.yml):logRetentionInDays}
   prune:
     automatic: true
     number: ${self:custom.lambda.maxVersions}
