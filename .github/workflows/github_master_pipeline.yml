@@ -33,7 +33,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '16.x'
-      - name: Install se deploy
+      - name: Install s3 deploy
         run: |
           sudo rm -rfv node_modules
           npm install -g serverless-s3-deploy@0.10.1
