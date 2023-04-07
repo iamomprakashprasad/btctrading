@@ -12,6 +12,7 @@ default:
 
 plugins:
   - serverless-python-requirements
+  - serverless-s3-deploy
 lambda:
   concurrency: 1
   maxVersions: 1

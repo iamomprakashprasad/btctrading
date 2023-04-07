@@ -68,6 +68,3 @@ custom:
   pythonRequirements:
     dockerizePip: false
     slim: true
-
-plugins:
-  - serverless-s3-deploy

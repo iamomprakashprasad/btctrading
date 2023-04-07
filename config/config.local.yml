@@ -11,6 +11,7 @@ default:
   coinmarket_cap_api_key: ${{ secrets.COINMARKETCAP_API_KEY }}
 plugins:
   - serverless-python-requirements
+  - serverless-s3-deploy
 lambda:
   concurrency: 1
   maxVersions: 1
