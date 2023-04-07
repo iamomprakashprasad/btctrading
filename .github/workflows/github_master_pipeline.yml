@@ -20,14 +20,15 @@ jobs:
         continue-on-error: true
       - name: Source Code Link
         run: echo "Source code- ${{ github.event.repository.html_url }}/tree/${{ github.sha }}"
-        
+
       - name: installing python 3.8
         run: |
           sudo apt update
           sudo apt install software-properties-common
           sudo add-apt-repository ppa:deadsnakes/ppa
           sudo apt install python3.8
-          python3.8 --version
+          alias python='python3.8'
+          python --version
 
       - name: Install basic dependencies
         run: |
