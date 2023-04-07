@@ -1,6 +1,5 @@
 btc_trading_schedule:
   handler: handlers.btc_trading_schedule.execute
-  reservedConcurrency: ${self:custom.lambda.concurrency}
   timeout: ${self:custom.lambda.timeout}
   memorySize: ${self:custom.lambda.memorySize}
 events:
