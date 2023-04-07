@@ -33,7 +33,8 @@ jobs:
       - name: Install basic dependencies
         run: |
           echo "installing and updating basic dependencies"
-          sudo apt install gcc python3-pip -y 
+          sudo apt install gcc -y 
+          sudo python3.8 -m ensurepip --default-pip
 
       - name: installing pip setup tools
         run: |
