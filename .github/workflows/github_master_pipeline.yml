@@ -33,7 +33,7 @@ jobs:
       - name: Install basic dependencies
         run: |
           echo "installing and updating basic dependencies"
-          sudo apt install gcc curl-y 
+          sudo apt install gcc curl -y 
       - name: Installing pip for python 3.8
         run: |
           curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
