@@ -29,8 +29,6 @@ provider:
         - ses:SendEmail
       Resource: "*"
   memorySize: 128
-  logs:
-    restApi: true
   deploymentBucket:
     name: ${self:custom.default.deploymentBucketName}
   deploymentPrefix: serverless/${self:service}/
