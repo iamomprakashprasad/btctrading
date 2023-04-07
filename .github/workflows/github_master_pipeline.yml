@@ -69,8 +69,3 @@ jobs:
         run: |
           export SLS_DEBUG=*
           sls deploy --stage ${{env.stage}} --region ${{env.region}}
-          
-
-          
-          
-          
