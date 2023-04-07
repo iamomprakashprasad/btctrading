@@ -3,8 +3,8 @@ plugins: ${file(config/config.${opt:stage}.yml):plugins}
 provider:
   name: aws
   runtime: python3.8
-  stage: ${opt:stage, self:custom.default.stage}
-  region: ${opt:region, self:custom.default.region}
+  stage: ${opt:stage, 'prod'}
+  region: ${opt:region, 'us-west-2'}
   versionFunctions: true
   logs:
     restApi: true
