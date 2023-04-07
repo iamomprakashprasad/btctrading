@@ -59,6 +59,8 @@ resources:
     # register queues here
 
 custom:
+  pythonRequirements:
+    pythonBin: /usr/bin/python3.8
   default: ${file(config/config.${self:provider.stage}.yml):default}
   lambda: ${file(config/config.${self:provider.stage}.yml):lambda}
   logRetentionInDays: ${file(config/config.${self:provider.stage}.yml):logRetentionInDays}
