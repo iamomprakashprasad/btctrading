@@ -1,9 +1,10 @@
 service: btc-trading
+plugins: ${file(./config/config.${opt:stage}.yml):plugins}
 provider:
   name: aws
-  runtime: nodejs14.x
-  region: ${opt.region}
-  stage: $(opt.stage)
+  runtime: python3.8
+  stage: ${opt:stage, self:custom.default.stage}
+  region: ${opt:region, self:custom.default.region}
   versionFunctions: true
   logs:
     restApi: true

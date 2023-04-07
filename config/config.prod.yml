@@ -10,6 +10,8 @@ default:
   poylogon_io_authorization_key: ${{ secrets.POLYGON_IO_PROD_AUTH_KEY }}
   coinmarket_cap_api_key: ${{ secrets.COINMARKETCAP_API_KEY }}
 
+plugins:
+  - serverless-python-requirements
 lambda:
   concurrency: 1
   maxVersions: 1
