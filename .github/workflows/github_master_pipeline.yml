@@ -35,7 +35,7 @@ jobs:
           echo "installing and updating basic dependencies"
           sudo apt install gcc curl-y 
       - name: Installing pip for python 3.8
-      - run: |
+        run: |
           curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
           python3.8 get-pip.py
 
