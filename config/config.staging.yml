@@ -2,7 +2,7 @@ default:
   stage: staging
   region: us-east-1
   name: ${self:service}-${self:provider.stage}
-  deploymentBucketName: btc-${self:custom.default.stage}-storage
+  deploymentBucketName: btc-trading-${self:custom.default.stage}-storage
   projectName: ""
   coinrmarketcap_base_url: "pro.coinmarketcap.com"
   coingecko_base_url: "https://pro-api.coingecko.com/api/v3"
