@@ -52,7 +52,6 @@ jobs:
       - name: Deploy Lambda function
         run: |
           export SLS_DEBUG=*
-          serverless plugin install -n serverless-python-requirements
           sls deploy --stage ${{env.stage}} --region ${{env.region}}
           
 

@@ -27,5 +27,5 @@ sqs:
   receiveMessageWaitTimeSeconds: 3 # (min:1 , max: 20,)
 
 
-logRetentionInDays: 8
+logRetentionInDays: 1
 
