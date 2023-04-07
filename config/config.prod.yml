@@ -16,7 +16,7 @@ plugins:
 lambda:
   concurrency: 1
   maxVersions: 1
-  memorySize: 10240
+  memorySize: 3008
   timeout: 900
 
 sqs:
