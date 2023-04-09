@@ -1,3 +1,5 @@
+import constants
 def execute(event, _, **kwargs):
-    print("hello")
+    logger = constants.LOGGER
+    logger.info("auth keys %s",constants.COINMARKETCAP_API_KEY)
     pass

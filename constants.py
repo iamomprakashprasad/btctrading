@@ -1,6 +1,16 @@
-COINMARKETCAP_SANDBOX_DEVELOPER_BASE_URL = "sandbox.coinmarketcap.com"
-COINMARKETCAP_DEVELOPER_BASE_URL = "pro.coinmarketcap.com"
+import os
+import logging
 
-COINGECKO_BASE_URL = "https://pro-api.coingecko.com/api/v3/"
+# LOGGER
+logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s')
+LOGGER = logging.getLogger(__name__)
+LOGGER.setLevel(logging.DEBUG)
 
-POLYGON_IO_BASE_URL = ""
+# Base URLs
+COINGECKO_BASE_URL = os.environ.get("COINGECKO_BASE_URL")
+POLYGOIN_IO_BASE_URL = os.environ.get("POLYGON_IO_BASE_URL")
+COINMARKETCAP_BASE_URL = os.environ.get("COINMARKETCAP_BASE_URL")
+
+#API Keys
+COINMARKETCAP_API_KEY = os.environ.get("COINMARKETCAP_API_KEY")
+POLYGON_IO_AUTH_KEY = os.environ.get("POLYGON_IO_AUTHORIZATION_KEY")
