@@ -1,4 +1,4 @@
-name: Github master Pipeline
+name: Github staging Pipeline
 on:
   push:
     branches:
