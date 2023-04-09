@@ -1,5 +1,5 @@
 btc_trading_schedule:
-  handler: handlers.btc_trading_schedule.execute
+  handler: handlers/btc_trading_schedule.execute
   timeout: ${self:custom.lambda.timeout}
   memorySize: ${self:custom.lambda.memorySize}
   events:
