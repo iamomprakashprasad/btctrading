@@ -22,12 +22,13 @@ jobs:
         continue-on-error: true
       - name: Wait for deployment approval
         if: github.event_name == 'deployment'
-        uses: github-developer/wait-for-deployment@v1
+        uses: trstringer/manual-approval@v1.9.0
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          environment: ${{ github.event.deployment.environment }}
-          deployment_id: ${{ github.event.deployment.id }}
-          required_contexts: ''
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          poll-interval: 10
+          deployment-id: ${{ github.event.deployment.id }}
+          environment-url: ${{ github.event.deployment_status.environment_url }}
+      
       - name: Source Code Link
         run: echo "Source code- ${{ github.event.repository.html_url }}/tree/${{ github.sha }}"
 
