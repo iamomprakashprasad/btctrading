@@ -21,11 +21,14 @@ jobs:
         run: echo "Deployment made by ${{ github.actor }} on branch ${{ github.ref }}"
         continue-on-error: true
       - name: Wait for deployment approval
-        if: github.event_name == 'Deploy code on Prod environment'
-        uses: peter-evans/wait-for-deployment@v1
+        if: github.event_name == 'deployment'
+        uses: jakejarvis/wait-for-deployment-status@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          wait-for-statuses: 'success'
+          environment_url: ${{ github.event.deployment_status.environment_url }}
+          target_url: ${{ github.event.deployment_status.target_url }}
+          required_contexts: '[]'
+          ignore_auto_approvals: true
       - name: Source Code Link
         run: echo "Source code- ${{ github.event.repository.html_url }}/tree/${{ github.sha }}"
 
