@@ -1,7 +1,7 @@
 # btctrading
 trading strategy based on ema for btc and minimal alts
 
-# Stpes To Stup Code
+# Stpes To Setup Code
 
 git clone https://github.com/iamomprakashprasad/btctrading.git
 cd btctrading
