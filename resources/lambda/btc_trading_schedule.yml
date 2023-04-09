@@ -3,4 +3,4 @@ btc_trading_schedule:
   timeout: ${self:custom.lambda.timeout}
   memorySize: ${self:custom.lambda.memorySize}
   events:
-      - schedule: rate(5 minutes)
+      - schedule: rate(1 hour)
